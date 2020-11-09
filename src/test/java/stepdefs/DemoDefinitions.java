@@ -7,9 +7,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
-
 
 
 public class DemoDefinitions {
@@ -47,13 +47,25 @@ public class DemoDefinitions {
         loginPage.clickButtonLogin(driver);
 
     }
+
+    @When ("^Add product \"(.*)\" to basket shop$")
+    public void addProductToBasketShopByName(String itemName) {
+        homePage.addToShopingCardByName(itemName);
+    }
+
     @Then("Check Correct Login")
     public void checkCorrectLogin() {
         homePage.waitForPage(driver, url);
         System.out.println(url);
     }
-
-
+    @Then("^Product \"(.*)\" has Remove Button$")
+    public void productRemoveButton (String itemName) {
+        Assert.assertEquals(homePage.getButtonTextByName(itemName), "REMOVE");
+    }
+    @Then("Basket Shop has Products")
+    public void basketProduct() {
+        Assert.assertTrue(homePage.isShoppingCartBadge());
+    }
 
     @Before
     public void beforeScenario(){

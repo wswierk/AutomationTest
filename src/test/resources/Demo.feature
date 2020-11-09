@@ -8,4 +8,6 @@ Feature: Demo feature
     When Enter Password "secret_sauce"
     When Click Login Button
     Then Check Correct Login
-
+    When Add product "Sauce Labs Backpack" to basket shop
+    Then Product "Sauce Labs Backpack" has Remove Button
+    Then Basket Shop has Products
