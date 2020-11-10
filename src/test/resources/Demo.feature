@@ -11,3 +11,6 @@ Feature: Demo feature
     When Add product "Sauce Labs Backpack" to basket shop
     Then Product "Sauce Labs Backpack" has Remove Button
     Then Basket Shop has Products
+    When Click basket shop
+    Then Basket page is Displayed
+    Then Product "Sauce Labs Backpack" is in Basket

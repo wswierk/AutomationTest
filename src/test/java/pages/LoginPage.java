@@ -24,8 +24,9 @@ public class LoginPage {
 
     public void waitForPage(WebDriver driver) {
        WebDriverWait wait =  new WebDriverWait(driver, 10);
-       wait.until(ExpectedConditions.visibilityOf(userNameInput));
        wait.until(ExpectedConditions.urlToBe("https://www.saucedemo.com/"));
+       wait.until(ExpectedConditions.visibilityOf(userNameInput));
+
     }
     public void inputUserName(WebDriver driver, String login) {
         userNameInput.clear();

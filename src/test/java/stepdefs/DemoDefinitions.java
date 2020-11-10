@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import pages.BasketPage;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -17,7 +18,9 @@ public class DemoDefinitions {
     private WebDriver driver;
     private LoginPage loginPage;
     private HomePage homePage ;
+    private BasketPage basketPage;
     private String url;
+
 
     @Given("^Start Web Browser, URL: \"(.*)\"$")
     public void startWebBrowser(String url) throws Throwable {
@@ -26,10 +29,11 @@ public class DemoDefinitions {
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
+        basketPage = new BasketPage(driver);
         this.url = url;
-
         loginPage.navigate(driver, this.url);
         loginPage.waitForPage(driver);
+
 
     }
     @When("^Enter Login \"(.*)\"$")
@@ -53,6 +57,11 @@ public class DemoDefinitions {
         homePage.addToShopingCardByName(itemName);
     }
 
+    @When("Click basket shop")
+    public void clickBasketShop() {
+        homePage.clickBasketShop();
+    }
+
     @Then("Check Correct Login")
     public void checkCorrectLogin() {
         homePage.waitForPage(driver, url);
@@ -65,6 +74,14 @@ public class DemoDefinitions {
     @Then("Basket Shop has Products")
     public void basketProduct() {
         Assert.assertTrue(homePage.isShoppingCartBadge());
+    }
+    @Then("Basket page is Displayed")
+    public void basketPageIsDisplayed() {
+        basketPage.waitForPage(driver, url);
+    }
+    @Then("^Product \"(.*)\" is in Basket$")
+    public void productIsInBasket(String itemName) {
+        Assert.assertEquals(basketPage.getBasketItemName(),itemName);
     }
 
     @Before

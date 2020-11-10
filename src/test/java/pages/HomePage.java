@@ -17,7 +17,9 @@ public class HomePage {
     @FindBy(className = "shopping_cart_badge") private WebElement shoppingCartBadge;
 
 
+
     public HomePage(WebDriver driver) {
+
         PageFactory.initElements(driver, this);
     }
 
@@ -60,4 +62,5 @@ public class HomePage {
     public boolean isShoppingCartBadge() {
         return shoppingCartBadge.isDisplayed();
     }
+    public void clickBasketShop() { shoppingCartBadge.click(); }
 }
