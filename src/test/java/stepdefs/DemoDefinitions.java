@@ -31,24 +31,24 @@ public class DemoDefinitions {
         loginPage = new LoginPage(driver);
         basketPage = new BasketPage(driver);
         this.url = url;
-        loginPage.navigate(driver, this.url);
-        loginPage.waitForPage(driver);
+        loginPage.navigate(this.url);
+        loginPage.waitForPage();
 
 
     }
     @When("^Enter Login \"(.*)\"$")
     public void enterLogin(String login) {
-        loginPage.inputUserName(driver, login);
+        loginPage.inputUserName(login);
 
     }
     @When("^Enter Password \"(.*)\"$")
     public void enterPassword(String password) {
-        loginPage.inputPassword(driver, password);
+        loginPage.inputPassword(password);
 
     }
     @When("Click Login Button")
     public void clickLoginButton() {
-        loginPage.clickButtonLogin(driver);
+        loginPage.clickButtonLogin();
 
     }
 
@@ -64,7 +64,7 @@ public class DemoDefinitions {
 
     @Then("Check Correct Login")
     public void checkCorrectLogin() {
-        homePage.waitForPage(driver, url);
+        homePage.waitForPage(url);
         System.out.println(url);
     }
     @Then("^Product \"(.*)\" has Remove Button$")
@@ -77,7 +77,7 @@ public class DemoDefinitions {
     }
     @Then("Basket page is Displayed")
     public void basketPageIsDisplayed() {
-        basketPage.waitForPage(driver, url);
+        basketPage.waitForPage(url);
     }
     @Then("^Product \"(.*)\" is in Basket$")
     public void productIsInBasket(String itemName) {
@@ -95,6 +95,7 @@ public class DemoDefinitions {
         } catch (Exception exception){
 
         }
+        driver.close();
         driver.quit();
     }
 }

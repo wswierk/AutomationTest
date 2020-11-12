@@ -11,11 +11,13 @@ public class BasketPage {
 
     @FindBy(className = "cart_contents_container") private WebElement waitForPage;
     @FindBy(className = "inventory_item_name") private WebElement basketItemName;
+    private WebDriver driver;
 
     public BasketPage (WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void waitForPage(WebDriver driver, String url) {
+    public void waitForPage(String url) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.urlToBe(url + "/cart.html"));
         wait.until(ExpectedConditions.visibilityOf(waitForPage));

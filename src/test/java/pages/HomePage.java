@@ -15,15 +15,15 @@ public class HomePage {
     @FindBy(className = "inventory_item_name") private List<WebElement> itemName;
     @FindBy(className = "btn_inventory") private List<WebElement> itemButton;
     @FindBy(className = "shopping_cart_badge") private WebElement shoppingCartBadge;
-
+    private WebDriver driver;
 
 
     public HomePage(WebDriver driver) {
-
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void waitForPage(WebDriver driver, String url) {
+    public void waitForPage(String url) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.urlToBe(url + "/inventory.html"));
         wait.until(ExpectedConditions.visibilityOf(inventoryContainer));
