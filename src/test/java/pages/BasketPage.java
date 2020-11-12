@@ -11,6 +11,7 @@ public class BasketPage {
 
     @FindBy(className = "cart_contents_container") private WebElement waitForPage;
     @FindBy(className = "inventory_item_name") private WebElement basketItemName;
+    @FindBy(className = "checkout_button") private WebElement buttonCheckout;
     private WebDriver driver;
 
     public BasketPage (WebDriver driver) {
@@ -24,5 +25,8 @@ public class BasketPage {
     }
     public String getBasketItemName() {
         return basketItemName.getText();
+    }
+    public void clickCheckoutButton() {
+        buttonCheckout.click();
     }
 }
