@@ -27,6 +27,8 @@ Feature: Demo feature
     Then Item total cost is "$29.99"
     Then Tax cost is "$2.40"
     Then Total cost is "$32.39"
+    When Click finish button
+    Then Checkout complete page is displayed
 
 
 

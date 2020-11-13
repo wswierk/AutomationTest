@@ -19,6 +19,7 @@ public class DemoDefinitions {
     private BasketPage basketPage;
     private OrderPage orderPage;
     private Checkoutsteptwo checkoutsteptwo;
+    private CheckoutComplete checkoutComplete;
     private String url;
 
 
@@ -33,6 +34,7 @@ public class DemoDefinitions {
         basketPage = new BasketPage(driver);
         orderPage = new OrderPage(driver);
         checkoutsteptwo = new Checkoutsteptwo(driver);
+        checkoutComplete = new CheckoutComplete(driver);
         this.url = url;
         loginPage.navigate(this.url);
         loginPage.waitForPage();
@@ -73,6 +75,9 @@ public class DemoDefinitions {
 
     @When("^Input postal code \"(.*)\"$")
     public void inputPostalCode (String postalCode) { orderPage.inputPostalCode(postalCode);}
+
+    @When("Click finish button")
+    public void clickFinishButton() { checkoutsteptwo.clickFinishButton(); }
 
     @Then("Check correct login")
     public void checkCorrectLogin() {
@@ -125,6 +130,21 @@ public class DemoDefinitions {
         Assert.assertTrue(checkoutsteptwo.isItemTotalCostDisplayed());
         Assert.assertEquals(checkoutsteptwo.getItemTotalCost(), "Item total: " + itemTotalCost);
     }
+
+    @Then("^Tax cost is \"(.*)\"$")
+    public void taxCost(String itemTaxCost) {
+        Assert.assertTrue(checkoutsteptwo.istTaxCostDisplayed());
+        Assert.assertEquals(checkoutsteptwo.getTaxCost(), "Tax: " + itemTaxCost);
+    }
+
+    @Then("^Total cost is \"(.*)\"$")
+    public void totalCost(String itemTotalCost) {
+        Assert.assertTrue(checkoutsteptwo.isItemTotalCostDisplayed());
+        Assert.assertEquals(checkoutsteptwo.getTotalCost(), "Total: " + itemTotalCost);
+    }
+
+    @Then("Checkout complete page is displayed")
+    public void checkoutcompletePageIsDisplayed() { checkoutComplete.waitForPage(url); }
 
     @Before
     public void beforeScenario(){

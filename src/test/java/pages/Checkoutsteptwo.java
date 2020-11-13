@@ -15,6 +15,7 @@ public class Checkoutsteptwo {
     @FindBy(className = "summary_subtotal_label") private WebElement itemTotalCost;
     @FindBy(className = "summary_tax_label") private WebElement taxCost;
     @FindBy(className = "summary_total_label") private WebElement totalCost;
+    @FindBy(className = "cart_button") private WebElement buttonFinish;
     private WebDriver driver;
 
     public Checkoutsteptwo(WebDriver driver) {
@@ -39,7 +40,10 @@ public class Checkoutsteptwo {
     public String getItemTotalCost() { return itemTotalCost.getText(); }
     public boolean isItemTotalCostDisplayed() { return itemTotalCost.isDisplayed(); }
     public String getTaxCost() { return taxCost.getText(); }
+    public boolean istTaxCostDisplayed () { return taxCost.isDisplayed(); }
     public String getTotalCost() { return totalCost.getText(); }
+    public boolean isTotalCostDisplayed() { return totalCost.isDisplayed(); }
+    public void clickFinishButton() { buttonFinish.click(); }
 
 
 
