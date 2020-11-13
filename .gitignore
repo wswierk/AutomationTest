@@ -1,2 +1,4 @@
 /.idea/
 /target/
+/src/test/java/pages/ForForPaula.java
+/src/test/resources/file.txt
