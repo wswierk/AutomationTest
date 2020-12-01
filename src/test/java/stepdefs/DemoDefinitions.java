@@ -1,12 +1,10 @@
 package stepdefs;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import managers.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import pages.*;
 
@@ -25,10 +23,8 @@ public class DemoDefinitions {
 
 
     @Given("^Start web browser, URL: \"(.*)\"$")
-    public void startWebBrowser(String url) throws Throwable {
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+    public void startWebBrowser(String url) {
+        driver = WebDriverManager.getDriver();
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         basketPage = new BasketPage(driver);
@@ -146,18 +142,4 @@ public class DemoDefinitions {
     @Then("Checkout complete page is displayed")
     public void checkoutcompletePageIsDisplayed() { checkoutComplete.waitForPage(url); }
 
-    @Before
-    public void beforeScenario(){
-    }
-
-    @After
-    public void afterScenario(){
-        try{
-            Thread.sleep(1000);
-        } catch (Exception exception){
-
-        }
-        driver.close();
-        driver.quit();
-    }
 }
