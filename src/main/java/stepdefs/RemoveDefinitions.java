@@ -7,8 +7,9 @@ import managers.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.html5.SessionStorage;
 import org.openqa.selenium.html5.WebStorage;
-import org.testng.Assert;
 import pages.BasketPage;
+import org.junit.Assert;
+
 
 public class RemoveDefinitions {
 

@@ -4,8 +4,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import managers.WebDriverManager;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import pages.*;
 
 
@@ -35,6 +35,7 @@ public class DemoDefinitions {
         loginPage.navigate(this.url);
         loginPage.waitForPage();
     }
+
     @When("^Enter login \"(.*)\"$")
     public void enterLogin(String login) {
         loginPage.inputUserName(login);
@@ -78,7 +79,6 @@ public class DemoDefinitions {
     @Then("Check correct login")
     public void checkCorrectLogin() {
         homePage.waitForPage(url);
-        System.out.println(url);
     }
     @Then("^Product \"(.*)\" has remove button$")
     public void productRemoveButton (String itemName) {

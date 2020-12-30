@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.messages.internal.com.google.common.collect.Ordering;
 import managers.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
+import org.junit.Assert;
 import pages.HomePage;
 
 public class SortList {

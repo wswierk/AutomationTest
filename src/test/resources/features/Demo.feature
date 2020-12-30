@@ -1,7 +1,6 @@
 Feature: Demo feature
 
 
-
   Scenario: Demonstrating how Cucumber-JVM works
     Given Start web browser, URL: "https://www.saucedemo.com"
     When Enter login "standard_user"
