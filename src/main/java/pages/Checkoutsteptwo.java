@@ -24,7 +24,7 @@ public class Checkoutsteptwo {
     }
 
     public void waitForPage(String url) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.urlToBe(url + "/checkout-step-two.html"));
         wait.until(ExpectedConditions.visibilityOf(summaryInfo));
     }

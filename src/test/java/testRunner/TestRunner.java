@@ -6,12 +6,14 @@ import managers.WebDriverManager;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
-@RunWith (Cucumber.class)
+
+@RunWith(Cucumber.class)
 @CucumberOptions
         (
                 features="src/test/resources/features/",
                 glue={"stepdefs"},
-                plugin = {"pretty"}
+                plugin = {"pretty"},
+                dryRun = false
         )
 
 public class TestRunner {
