@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions
         (
-                features="src/test/resources/features/",
-                glue={"stepdefs"},
+                features = "src/test/resources/features/",
+                glue = {"stepdefs"},
                 plugin = {"pretty"},
                 dryRun = false
         )
@@ -22,7 +22,5 @@ public class TestRunner {
     public static void closeWebDriver() {
         WebDriverManager.closeDriver();
     }
-
-
 
 }

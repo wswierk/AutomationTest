@@ -10,7 +10,6 @@ import org.openqa.selenium.html5.WebStorage;
 import pages.BasketPage;
 import org.junit.Assert;
 
-
 public class RemoveDefinitions {
 
     private WebDriver driver;

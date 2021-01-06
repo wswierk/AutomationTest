@@ -8,11 +8,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class OrderPage {
-    @FindBy(className = "checkout_info") private WebElement checkoutInfo;
-    @FindBy(css = ".form_input#first-name") private WebElement inputFirstName;
-    @FindBy(css = ".form_input#last-name") private WebElement inputLastName;
-    @FindBy(css = ".form_input#postal-code") private WebElement inputPostalCode;
-    @FindBy(css = "[type=submit]") private WebElement buttonSubmit;
+
+    @FindBy(className = "checkout_info")
+    private WebElement checkoutInfo;
+
+    @FindBy(css = ".form_input#first-name")
+    private WebElement inputFirstName;
+
+    @FindBy(css = ".form_input#last-name")
+    private WebElement inputLastName;
+
+    @FindBy(css = ".form_input#postal-code")
+    private WebElement inputPostalCode;
+
+    @FindBy(css = "[type=submit]")
+    private WebElement buttonSubmit;
+
     private WebDriver driver;
 
     public OrderPage(WebDriver driver) {
@@ -41,9 +52,8 @@ public class OrderPage {
         inputPostalCode.sendKeys(postalCode);
     }
 
-    public void clickContinueButton(){
+    public void clickContinueButton() {
         buttonSubmit.click();
     }
-
 
 }

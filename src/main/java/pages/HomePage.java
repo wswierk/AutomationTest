@@ -13,14 +13,25 @@ import java.util.List;
 
 public class HomePage {
 
-    @FindBy(className = "inventory_container") private WebElement inventoryContainer;
-    @FindBy(className = "inventory_item_name") private List<WebElement> itemName;
-    @FindBy(className = "btn_inventory") private List<WebElement> itemButton;
-    @FindBy(className = "inventory_item_price") private List<WebElement> itemPrice;
-    @FindBy(className = "shopping_cart_badge") private WebElement shoppingCartBadge;
-    @FindBy(className = "product_sort_container") private WebElement sortBySelect;
-    private WebDriver driver;
+    @FindBy(className = "inventory_container")
+    private WebElement inventoryContainer;
 
+    @FindBy(className = "inventory_item_name")
+    private List<WebElement> itemName;
+
+    @FindBy(className = "btn_inventory")
+    private List<WebElement> itemButton;
+
+    @FindBy(className = "inventory_item_price")
+    private List<WebElement> itemPrice;
+
+    @FindBy(className = "shopping_cart_badge")
+    private WebElement shoppingCartBadge;
+
+    @FindBy(className = "product_sort_container")
+    private WebElement sortBySelect;
+
+    private WebDriver driver;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -32,24 +43,22 @@ public class HomePage {
         wait.until(ExpectedConditions.urlToBe(url + "/inventory.html"));
         wait.until(ExpectedConditions.visibilityOf(inventoryContainer));
     }
+
     public String getProductName(int itemNumber) {
         return itemName.get(itemNumber).getText();
     }
+
     public void addToShopingCardByName(String itemName) {
-        int index = -1;
+        for (int i = 0; i < this.itemName.size(); i++) {
 
-        try {
-            for (int i = 0; i < this.itemName.size(); i++)
-                if (getProductName(i).equals(itemName))
-                    index = i;
-
-            itemButton.get(index).click();
-        } catch (IndexOutOfBoundsException exception) {
-            System.out.println("Nie znaleziono elemnetu o nazwie" + itemName);
-            exception.printStackTrace();
+            if (getProductName(i).equals(itemName)) {
+                itemButton.get(i).click();
+                return;
+            }
         }
     }
-    public String getButtonTextByName (String itemName) {
+
+    public String getButtonTextByName(String itemName) {
         int index = -1;
 
         try {
@@ -63,21 +72,31 @@ public class HomePage {
         }
         return itemButton.get(index).getText();
     }
+
     public boolean isShoppingCartBadge() {
         return shoppingCartBadge.isDisplayed();
     }
-    public void clickBasketShop() { shoppingCartBadge.click(); }
-    public void navigate(String url) { driver.get(url + "/inventory.html"); }
+
+    public void clickBasketShop() {
+        shoppingCartBadge.click();
+    }
+
+    public void navigate(String url) {
+        driver.get(url + "/inventory.html");
+    }
+
     public void setSortBy(String sortBy) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(sortBySelect));
         Select select = new Select(sortBySelect);
         select.selectByVisibleText(sortBy);
     }
+
     public String checkSortBy() {
         Select select = new Select(sortBySelect);
         return select.getFirstSelectedOption().getText();
     }
+
     public List<String> getItemNameList() {
         List<String> itemNameList = new ArrayList<String>();
         for (int i = 0; i < itemName.size(); i++) {
@@ -85,6 +104,7 @@ public class HomePage {
         }
         return itemNameList;
     }
+
     public List<Float> getItemPriceList() {
         List<Float> itemPriceList = new ArrayList<Float>();
         for (int i = 0; i < itemPrice.size(); i++) {
@@ -92,4 +112,5 @@ public class HomePage {
         }
         return itemPriceList;
     }
+
 }

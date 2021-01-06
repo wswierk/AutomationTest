@@ -23,7 +23,6 @@ public class SortList {
         homePage = new HomePage(driver);
         homePage.navigate(url);
         homePage.waitForPage(url);
-
     }
 
     @When("^Set sort list by \"(.*)\"$")
@@ -50,6 +49,5 @@ public class SortList {
                 break;
         }
     }
-
 
 }

@@ -14,7 +14,6 @@ public class Hooks {
         driver = WebDriverManager.getDriver();
     }
 
-
     @Before
     public void beforeScenario(Scenario scenario) {
         System.out.println(scenario.getName());
@@ -24,7 +23,6 @@ public class Hooks {
     public void afterScenario(Scenario scenario) {
         System.out.println(scenario.getStatus());
     }
-
 
 }
 

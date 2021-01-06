@@ -8,7 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CheckoutComplete {
-    @FindBy(className = "pony_express") private WebElement ponyExpress;
+
+    @FindBy(className = "pony_express")
+    private WebElement ponyExpress;
+
     private WebDriver driver;
 
     public CheckoutComplete(WebDriver driver) {
@@ -21,4 +24,5 @@ public class CheckoutComplete {
         wait.until(ExpectedConditions.urlToBe(url + "/checkout-complete.html"));
         wait.until(ExpectedConditions.visibilityOf(ponyExpress));
     }
+
 }
