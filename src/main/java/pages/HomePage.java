@@ -59,18 +59,13 @@ public class HomePage {
     }
 
     public String getButtonTextByName(String itemName) {
-        int index = -1;
+        for (int i = 0; i < this.itemName.size(); i++) {
 
-        try {
-            for (int i = 0; i < this.itemName.size(); i++)
-                if (getProductName(i).equals(itemName))
-                    index = i;
-
-        } catch (IndexOutOfBoundsException exception) {
-            System.out.println("Nie znaleziono elemnetu o nazwie" + itemName);
-            exception.printStackTrace();
+            if (getProductName(i).equals(itemName)) {
+                return itemButton.get(i).getText();
+            }
         }
-        return itemButton.get(index).getText();
+        return null;
     }
 
     public boolean isShoppingCartBadge() {
@@ -85,14 +80,27 @@ public class HomePage {
         driver.get(url + "/inventory.html");
     }
 
-    public void setSortBy(String sortBy) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(sortBySelect));
+    public void setSortByNameAscending() {
         Select select = new Select(sortBySelect);
-        select.selectByVisibleText(sortBy);
+        select.selectByVisibleText("Name (A to Z)");
     }
 
-    public String checkSortBy() {
+    public void setSortByNameDescending() {
+        Select select = new Select(sortBySelect);
+        select.selectByVisibleText("Name (Z to A)");
+    }
+
+    public void setSortByPriceAscending() {
+        Select select = new Select(sortBySelect);
+        select.selectByVisibleText("Price (low to high)");
+    }
+
+    public void setSortByPriceDescending() {
+        Select select = new Select(sortBySelect);
+        select.selectByVisibleText("Price (high to low)");
+    }
+
+    public String getSortMethod() {
         Select select = new Select(sortBySelect);
         return select.getFirstSelectedOption().getText();
     }

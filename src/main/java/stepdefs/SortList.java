@@ -13,28 +13,38 @@ public class SortList {
 
     private WebDriver driver;
     private HomePage homePage;
-    private String url;
-    private String sortBy;
 
     @Given("^Start web browser on home page, URL: \"(.*)\"$")
     public void startWebBrowser(String url) {
         driver = WebDriverManager.getDriver();
-        this.url = url;
         homePage = new HomePage(driver);
         homePage.navigate(url);
         homePage.waitForPage(url);
     }
 
-    @When("^Set sort list by \"(.*)\"$")
-    public void setSortListBy(String sortBy) {
-        this.sortBy = sortBy;
-        homePage.setSortBy(sortBy);
+    @When("Set sort list by name \\(A to Z)")
+    public void setSortByNameAscending() {
+        homePage.setSortByNameAscending();
     }
 
-    @Then("Check correct sort")
+    @When("Set sort list by name \\(Z to A)")
+    public void setSortByNameDescending() {
+        homePage.setSortByNameDescending();
+    }
+
+    @When("Set sort list by price \\(low to high)")
+    public void setSortByPriceAscending() {
+        homePage.setSortByPriceAscending();
+    }
+
+    @When("Set sort list by price \\(high to low)")
+    public void setSortByPriceDescending() {
+        homePage.setSortByPriceDescending();
+    }
+
+    @Then("Validate the sort")
     public void CheckCorrectSort() {
-        Assert.assertEquals(homePage.checkSortBy(), sortBy);
-        switch (sortBy) {
+        switch (homePage.getSortMethod()) {
             case "Name (A to Z)":
                 Assert.assertEquals(Ordering.natural().isOrdered(homePage.getItemNameList()), true);
                 break;
