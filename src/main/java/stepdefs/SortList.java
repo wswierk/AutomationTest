@@ -46,16 +46,16 @@ public class SortList {
     public void CheckCorrectSort() {
         switch (homePage.getSortMethod()) {
             case "Name (A to Z)":
-                Assert.assertEquals(Ordering.natural().isOrdered(homePage.getItemNameList()), true);
+                Assert.assertTrue(Ordering.natural().isOrdered(homePage.getItemNameList()));
                 break;
             case "Name (Z to A)":
-                Assert.assertEquals(Ordering.natural().reverse().isOrdered(homePage.getItemNameList()), true);
+                Assert.assertTrue(Ordering.natural().reverse().isOrdered(homePage.getItemNameList()));
                 break;
             case "Price (low to high)":
-                Assert.assertEquals(Ordering.natural().isOrdered(homePage.getItemPriceList()), true);
+                Assert.assertTrue(Ordering.natural().isOrdered(homePage.getItemPriceList()));
                 break;
             case "Price (high to low)":
-                Assert.assertEquals(Ordering.natural().reverse().isOrdered(homePage.getItemPriceList()), true);
+                Assert.assertTrue(Ordering.natural().reverse().isOrdered(homePage.getItemPriceList()));
                 break;
         }
     }

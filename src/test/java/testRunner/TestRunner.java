@@ -6,7 +6,6 @@ import managers.WebDriverManager;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
-
 @RunWith(Cucumber.class)
 @CucumberOptions
         (
