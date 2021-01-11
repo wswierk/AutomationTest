@@ -1,5 +1,5 @@
 Feature: Check sort list
-
+  Tests that check the correctness of product sorting
 
   Scenario: Validate the sort list by name (A to Z)
     Given Start web browser on home page, URL: "https://www.saucedemo.com"

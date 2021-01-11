@@ -8,7 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import pages.*;
 
-public class DemoDefinitions {
+public class EndToEndTest {
 
     private WebDriver driver;
     private LoginPage loginPage;

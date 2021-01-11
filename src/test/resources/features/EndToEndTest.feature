@@ -1,7 +1,8 @@
-Feature: Demo feature
+Feature: End to End test
+  Basic program path test.
+  Checking the operation from user login to product purchase.
 
-
-  Scenario: Demonstrating how Cucumber-JVM works
+  Scenario: Product purchase
     Given Start web browser, URL: "https://www.saucedemo.com"
     When Enter login "standard_user"
     When Enter password "secret_sauce"
@@ -15,9 +16,9 @@ Feature: Demo feature
     Then Product "Sauce Labs Backpack" is in basket
     When Click checkout button
     Then Order page is displayed
-    When Input first name "Wojtek"
-    When Input last name "Miszcz"
-    When Input postal code "44-666"
+    When Input first name "Name"
+    When Input last name "Surname"
+    When Input postal code "12-345"
     Then Click continue button
     Then Checkout order page is displayed
     Then Product "Sauce Labs Backpack" is on order list
@@ -28,6 +29,3 @@ Feature: Demo feature
     Then Total cost is "$32.39"
     When Click finish button
     Then Checkout complete page is displayed
-
-
-

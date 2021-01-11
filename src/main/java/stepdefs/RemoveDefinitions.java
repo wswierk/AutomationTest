@@ -14,13 +14,11 @@ public class RemoveDefinitions {
 
     private WebDriver driver;
     private BasketPage basketPage;
-    private String url;
 
-    @Given("^Remove product from basket shop \"(.*)\"$")
+    @Given("^Open the page \"(.*)\" on the basket with one product added$")
     public void removeProductFromBasketShop(String url) {
         driver = WebDriverManager.getDriver();
         basketPage = new BasketPage(driver);
-        this.url = url;
         basketPage.navigate(url);
         SessionStorage sessionStorage = ((WebStorage) driver).getSessionStorage();
         sessionStorage.setItem("cart-contents", "[4]");
